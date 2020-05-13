@@ -99,13 +99,23 @@ std::set<std::string> find_library_names(bam_header_t const* header) {
     printf("%d\n", nrg);
 
     for (int i=0; i<nrg; i++) {
-      std::cerr << i << std::endl;
-      std::cerr << rg[i].name << std::endl;
+      //std::cerr << i << std::endl;
+      //std::cerr << rg[i].name << std::endl;
       sam_hrec_tag_t * tag = rg[i].ty->tag;
-      std::cerr << tag->str << std::endl;
+      //std::cerr << tag->str << std::endl;
       while (tag->next) {
         tag = tag->next;
-        std::cerr << tag->str << std::endl;
+	std::string lib_check = tag->str;
+	//std::cerr << lib_check << std::endl;	
+	//std::cerr << tag->str << std::endl;
+	//Check to see if first two characters of tag->str
+	//are LB.
+	if (lib_check.substr(0,2) == "LB")
+	{
+		lib_names.insert(lib_check);
+	}
+        //std::cerr << tag->str << std::endl;
+	//lib_names.insert(tag->str);
       }
     }
 
