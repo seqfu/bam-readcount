@@ -3,7 +3,7 @@ bam-readcount
 
 ![tests](https://github.com/seqfu/bam-readcount/actions/workflows/tests.yml/badge.svg?branch=actions-config)
 
-![coverage](https://coveralls.io/repos/seqfu/bam-readcount/badge.svg?branch=actions-config&service=github%28Coverage Status%29)
+![coverage](https://coveralls.io/repos/seqfu/bam-readcount/badge.svg?branch=actions-config&service=github)
 
 This branch is a refactor of `bam-readcount` to the `samtools-1.10` 
 (and `htslib-1.10`) API, which adds CRAM support. Should build in a 
