@@ -1,8 +1,8 @@
-name: bam-readcount-test
+name: test
 on: [push]
 jobs:
-  bam-readcount-build-and-ctest:
-    runs-on: ubuntu-latest
+  ubuntu-18.04:
+    runs-on: ubuntu-18.04
     steps:
       - run: sudo apt-get install lcov
       - uses: actions/checkout@v2
@@ -16,3 +16,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: 'build/codecoverage.info'
+  macos-10.15:
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
+          architecture: 'x64'
+      - run: mkdir build && (cd build && cmake .. && make)
