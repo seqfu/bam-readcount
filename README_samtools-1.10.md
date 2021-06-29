@@ -4,6 +4,54 @@ bam-readcount
 ![tests](https://github.com/seqfu/bam-readcount/actions/workflows/tests.yml/badge.svg?branch=actions-config)
 ![coverage](https://coveralls.io/repos/seqfu/bam-readcount/badge.svg?branch=actions-config&service=github)
 
+
+`bam-readcount` runs on a `BAM` or `CRAM` file and generates metrics at
+single nucleotide positions. These metrics can be useful for filtering
+out false positive variant calls.
+
+Run with no arguments for command-line help:
+
+  $ bam-readcount
+
+  Usage: bam-readcount [OPTIONS] <bam_file> [region]
+  Generate metrics for bam_file at single nucleotide positions.
+  Example: bam-readcount -f ref.fa some.bam
+
+  Available options:
+    -h [ --help ]                         produce this message
+    -v [ --version ]                      output the version number
+    -q [ --min-mapping-quality ] arg (=0) minimum mapping quality of reads used
+                                          for counting.
+    -b [ --min-base-quality ] arg (=0)    minimum base quality at a position to
+                                          use the read for counting.
+    -d [ --max-count ] arg (=10000000)    max depth to avoid excessive memory
+                                          usage.
+    -l [ --site-list ] arg                file containing a list of regions to
+                                          report readcounts within.
+    -f [ --reference-fasta ] arg          reference sequence in the fasta format.
+    -D [ --print-individual-mapq ] arg    report the mapping qualities as a comma
+                                          separated list.
+    -p [ --per-library ]                  report results by library.
+    -w [ --max-warnings ] arg             maximum number of warnings of each type
+                                          to emit. -1 gives an unlimited number.
+    -i [ --insertion-centric ]            generate indel centric readcounts.
+                                          Reads containing insertions will not be
+                                          included in per-base counts
+
+
+Output
+------
+
+Output is tab-separated with no header to `STDOUT`, one line per
+position as follows:
+
+    chr	position	reference_base	depth	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end   ...
+
+
+
+This branch
+-----------
+
 This branch is a refactor of `bam-readcount` to the `samtools-1.10` 
 (and `htslib-1.10`) API, which adds CRAM support. Should build in a 
 minimal environment with C and C++ compilers, Make, and CMake.
