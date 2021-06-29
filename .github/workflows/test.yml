@@ -1,7 +1,7 @@
 name: test
 on: [push]
 jobs:
-  ubuntu-18.04:
+  ubuntu-18_04:
     runs-on: ubuntu-18.04
     steps:
       - run: sudo apt-get install lcov
@@ -16,7 +16,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: 'build/codecoverage.info'
-  macos-10.15:
+  macos-10_15:
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v2
