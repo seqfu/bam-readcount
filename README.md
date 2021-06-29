@@ -9,7 +9,7 @@ bam-readcount
 single nucleotide positions. These metrics can be useful for filtering
 out false positive variant calls.
 
-For build instructions, see [build](build.md).
+For build instructions, see [BUILD.md](BUILD.md).
 
 Run with no arguments for command-line help:
 
