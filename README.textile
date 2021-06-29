@@ -1,6 +1,6 @@
 h1. bam-readcount 
 
-!https://github.com/seqfu/bam-readcount/actions/workflows/test.yml/badge.svg?branch=actions-config!
+!https://github.com/seqfu/bam-readcount/actions/workflows/tests.yml/badge.svg?branch=actions-config!
 
 !https://coveralls.io/repos/seqfu/bam-readcount/badge.svg?branch=actions-config&service=github(Coverage Status)!
 
