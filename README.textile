@@ -2,6 +2,8 @@ h1. bam-readcount
 
 !https://github.com/seqfu/bam-readcount/actions/workflows/test.yml/badge.svg?branch=actions-config!
 
+!https://coveralls.io/repos/seqfu/bam-readcount/badge.svg?branch=actions-config&service=github(Coverage Status)!
+
 p. The purpose of this program is to generate metrics at single nucleotide positions.
 There are number of metrics generated which can be useful for filtering out false positive calls.
 Help is currently available on the commandline if you do not supply the program
