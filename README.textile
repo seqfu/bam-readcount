@@ -1,6 +1,6 @@
 h1. bam-readcount 
 
-!https://github.com/seqfu/bam-readcount/actions/workflows/bam-readcount-test.yml/badge.svg?branch=actions-config!
+!https://github.com/seqfu/bam-readcount/actions/workflows/test.yml/badge.svg?branch=actions-config!
 
 p. The purpose of this program is to generate metrics at single nucleotide positions.
 There are number of metrics generated which can be useful for filtering out false positive calls.
