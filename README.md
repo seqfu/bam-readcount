@@ -47,7 +47,7 @@ position as follows:
 
     chr	position	reference_base	depth	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end   ...
 
-field | value
+|
 --- | ---
 base | the base that all reads following in this field contain at the reported position i.e. C
 count | the number of reads containing the base
