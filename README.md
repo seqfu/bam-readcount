@@ -47,21 +47,22 @@ position as follows:
 
     chr	position	reference_base	depth	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end   ...
 
-| --- | --- |
-|base | the base that all reads following in this field contain at the reported position i.e. C|
-|count | the number of reads containing the base|
-|avg_mapping_quality | the mean mapping quality of reads containing the base|
-|avg_basequality | the mean base quality for these reads|
-|avg_se_mapping_quality | mean single ended mapping quality|
-|num_plus_strand | number of reads on the plus/forward strand|
-|num_minus_strand | number of reads on the minus/reverse strand|
-|avg_pos_as_fraction | average position on the read as a fraction (calculated with respect to the length after clipping). This value is normalized to the center of the read (bases occurring strictly at the center of the read have a value of 1, those occurring strictly at the ends should approach a value of 0)|
-|avg_num_mismatches_as_fraction | average number of mismatches on these reads per base|
-|avg_sum_mismatch_qualities | average sum of the base qualities of mismatches in the reads|
-|num_q2_containing_reads | number of reads with q2 runs at the 3’ end|
-|avg_distance_to_q2_start_in_q2_reads | average distance of position (as fraction of unclipped read length) to the start of the q2 run|
-|avg_clipped_length | average clipped read length of reads|
-|avg_distance_to_effective_3p_end | average distance to the 3’ prime end of the read (as fraction of unclipped read length)|
+field | value
+--- | ---
+base | the base that all reads following in this field contain at the reported position i.e. C
+count | the number of reads containing the base
+avg_mapping_quality | the mean mapping quality of reads containing the base
+avg_basequality | the mean base quality for these reads
+avg_se_mapping_quality | mean single ended mapping quality
+num_plus_strand | number of reads on the plus/forward strand
+num_minus_strand | number of reads on the minus/reverse strand
+avg_pos_as_fraction | average position on the read as a fraction (calculated with respect to the length after clipping). This value is normalized to the center of the read (bases occurring strictly at the center of the read have a value of 1, those occurring strictly at the ends should approach a value of 0)
+avg_num_mismatches_as_fraction | average number of mismatches on these reads per base
+avg_sum_mismatch_qualities | average sum of the base qualities of mismatches in the reads
+num_q2_containing_reads | number of reads with q2 runs at the 3’ end
+avg_distance_to_q2_start_in_q2_reads | average distance of position (as fraction of unclipped read length) to the start of the q2 run
+avg_clipped_length | average clipped read length of reads
+avg_distance_to_effective_3p_end | average distance to the 3’ prime end of the read (as fraction of unclipped read length)
 
 
 This branch
