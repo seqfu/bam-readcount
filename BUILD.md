@@ -2,79 +2,27 @@ Build instructions
 ==================
 
 
-This branch
------------
+Requirements
+------------
 
-This branch is a refactor of `bam-readcount` to the `samtools-1.10` 
-(and `htslib-1.10`) API, which adds CRAM support. Should build in a 
-minimal environment with C and C++ compilers, Make, and CMake.
+    A C++ toolchain
+    cmake 
+    make
 
-To clone this fork and branch 
+On a Debian Linux-based system such as Ubuntu 
 
-    git clone -b samtools-1.10 https://github.com/seqfu/bam-readcount
-    cd bam-readcount
+    apt install build-essential cmake
 
-Builds are failing under OS X, see `OS X` below.
+Will install the required software.
 
+Builds are currently failing under OS X: see `OS X` below.
 
-Vendored libraries
-------------------
-
-Any build requires downloading the vendored libraries.
-
-Already under `vendor/` are
-  
-    vendor/
-      boost-1.55-bamrc.tar.gz         # subset of Boost needed for bamrc
-      Makefile.disable_curl.patch     # Not used
-
-The patch is no longer used.  Except for Boost the vendored libraries
-are not included in the repository. To fetch them, run 
-
-    # wget is required for this script
-    0/populate_vendor.sh
-
-This should download
-
-    vendor/
-      bzip2-1.0.8.tar.gz
-      curl-7.67.0.tar.gz
-      mbedtls-2.16.4-apache.tgz
-      samtools-1.10.tar.bz2
-      xz-5.2.4.tar.gz
-      zlib-1.2.11.tar.gz
-
-I chose `mbedtls-2.16.4-apache.tgz` for `libcurl` SSL support as it has
-no additional dependencies. This is used (via `https`) to query the ENA
-CRAM registry for reference hashes. Another option might be wolfSSL's
-tiny-cURL distribution, which builds a lighter cURL with HTTPS support,
-but the download process involves a form.
+All required libraries are included in the repository under `vendor/`.
+See [vendor/README.md](vendor/README.md) for more information.
 
 
 Build
 -----
-
-Before building, make sure to download the vendored libraries as in the
-section above.
-
-
-### Run minimal build Docker container
-
-If you have Docker running, build using the included Docker image
-
-    cd docker/minimal-cmake
-    # This will start a container using image seqfu/minimal-cmake
-    make interact
-
-This will start a minimal docker container with `build-essential` and
-`cmake` installed, with the cloned repository mounted at 
-
-    /bam-readcount
-
-and starting in that directory. 
-
-
-### Build `bam-readcount` and vendored libraries
 
 Make a build directory
 
@@ -90,7 +38,7 @@ Run Make
     make 
 
 This will build all the vendored libraries as well as `bam-readcount`.
-The final binary will be
+The final binary, which can be moved anywhere, is
 
     bin/bam-readcount
 
@@ -98,6 +46,24 @@ Try it on a test CRAM
 
     cd ../test-data
     ../build/bin/bam-readcount -f rand1k.fa twolib.sorted.cram
+
+
+Build (Docker)
+--------------
+
+If you have Docker running, build using the included Docker image
+
+    cd docker/minimal-cmake
+    # This will start a container using image seqfu/minimal-cmake
+    make interact
+
+This will start a minimal docker container with `build-essential` and
+`cmake` installed, with this cloned repository mounted at 
+
+    /bam-readcount
+
+and starting in that directory. Then, follow the build instructions 
+above.
 
 
 ### Test data
@@ -150,36 +116,12 @@ CRAM reference
 
 If no reference is given to `bam-readcount` with `-f`, the CRAM will
 attempt to use the reference encoded in the header, or do a lookup at
-ENA (this seems to have some issues when run on the LSF cluster). 
+ENA.
 
 If a reference is given with `-f FASTA`, it will override whatever is 
 in the CRAM header.
 
 
-Todo
-----
-
-Tested against `genome/bam-readcount` `master` with a simple BAM file 
-converted to CRAM with identical output, but needs more testing.
-
-`find_library_names()` line 91 in 
-
-    src/exe/bam-readcount/bamreadcount.cpp
-
-has been modified to return an empty list because `sam_header2key_val`
-has been removed (along with all of `sam_header.h`) and there is a new
-(`hrecs`?) API to access header data that we will need to use. Enabling
-`-p` still appears to work. It looks like the list is only used to print
-expected library names to `STDERR`.
-
-Add `URL_HASH` for vendored libraries for CMake verification.
-
-Lower CMake minimum version requirement in `BuildSamtools.cmake`, 
-and be consistent throughout.
-
-On MGI's LSF cluster, the curl/https lookup in the ENA CRAM registry
-fails. This might be expected due to network restrictions on cluster
-container.
 
 
 OS X
@@ -217,5 +159,12 @@ Not sure why, since it seems to be a build configuration problem but
 doesn't happen in the minimal Docker build container.
 
 
+Todo
+----
 
+Add `URL_HASH` for vendored libraries for CMake verification.
+
+On MGI's LSF cluster, the curl/https lookup in the ENA CRAM registry
+fails. This might be expected due to network restrictions on cluster
+containers.
 
