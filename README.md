@@ -18,7 +18,8 @@ questions related to our tools.
 Build
 -----
 
-For details and requirements, see [BUILD.md](BUILD.md). 
+Requires a C++ toolchain and `cmake`. For details see
+[BUILD.md](BUILD.md). 
 
   mkdir build
   cd build
