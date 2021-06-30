@@ -43,6 +43,14 @@ Run with no arguments for command-line help:
                                             Reads containing insertions will not be
                                             included in per-base counts
 
+If specified, `[region]` should be in the same format as `samtools`
+
+    chromosome:start-stop
+
+The file provided to the `-l` (`--site-list`) option should be tab-separated
+
+    chromosome	start	end
+
 
 Output
 ------
@@ -79,4 +87,21 @@ With the `-p` option, each output line will have a set of `{}`-delimited
 results, one for each library:
 
     chr	position	reference_base	depth	library_1_name	{	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end	}   ...   library_N_name	{	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end	}
+
+
+Bugs
+----
+
+### I get a segfault when attempting to run on a whole bam file
+
+This is a known bug that will be addressed in future versions. In most
+cases, you will only need read counts on a subset of positions and
+specifying the sites of interest is functional. Should you need to run
+the entire genome through then running by chromosome and concatenating
+the results should be a decent workaround (e.g. `bam-readcount -f
+ref.fasta some.bam chr1`).
+
+
+
+
 
