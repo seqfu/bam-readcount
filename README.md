@@ -21,10 +21,12 @@ Build
 Requires a C++ toolchain and `cmake`. For details see
 [BUILD.md](BUILD.md). 
 
-  mkdir build
-  cd build
-  cmake ..
-  make
+    mkdir build
+    cd build
+    cmake ..
+    make
+    # Executable is
+    bin/bam-readcount
 
 
 Usage
