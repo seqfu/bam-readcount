@@ -9,10 +9,10 @@ bam-readcount
 single nucleotide positions. These metrics can be useful for filtering
 out false positive variant calls.
 
-For support, please
-ask a question on [Biostars](https://www.biostars.org/); we
-automatically monitor [Biostars](https://www.biostars.org/) for
-questions related to our tools.
+For support, please first look at the `bam-readcount` tag on
+[Biostars](https://www.biostars.org/t/bam-readcount) as many of the most
+frequently asked questions about `bam-readcount` have been answered
+there.
 
 
 Build
