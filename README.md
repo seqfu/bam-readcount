@@ -49,14 +49,15 @@ position:
 
     chr	position	reference_base	depth	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end   ...
 
-There is one set of `:`-separated fields for each reported `base`:
+There is one set of `:`-separated fields for each reported `base` with 
+statistics on the set of reads containing that base:
 
 Field | Description
 ----- | -----------
-base | The base for the following statistics, eg C
-count | Number of reads containing the base
-avg_mapping_quality | Mean mapping quality of reads containing the base
-avg_basequality | Mean base quality for these reads
+base | The base, eg `C`
+count | Number of reads
+avg_mapping_quality | Mean mapping quality
+avg_basequality | Mean base quality
 avg_se_mapping_quality | Mean single ended mapping quality
 num_plus_strand | Number of reads on the plus/forward strand
 num_minus_strand | Number of reads on the minus/reverse strand
@@ -65,5 +66,5 @@ avg_num_mismatches_as_fraction | Average number of mismatches on these reads per
 avg_sum_mismatch_qualities | Average sum of the base qualities of mismatches in the reads
 num_q2_containing_reads | Number of reads with q2 runs at the 3’ end
 avg_distance_to_q2_start_in_q2_reads | Average distance of position (as fraction of unclipped read length) to the start of the q2 run
-avg_clipped_length | Average clipped read length of reads
+avg_clipped_length | Average clipped read length
 avg_distance_to_effective_3p_end | Average distance to the 3’ prime end of the read (as fraction of unclipped read length)
