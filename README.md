@@ -57,6 +57,17 @@ header, one region per line:
     chromosome	start	end
 
 
+### CRAM support
+
+`bam-readcount` now supports CRAM files as input. 
+
+If a reference is specified `-f FASTA`, it will override whatever is in
+the CRAM header.
+
+Otherwise, the reference(s) encoded in the CRAM header or a lookup by
+MD5 at ENA will be used.
+
+
 Output
 ------
 

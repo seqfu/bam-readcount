@@ -13,7 +13,7 @@ On a Debian Linux-based system such as Ubuntu
 
     apt install build-essential cmake
 
-Will install the required software.
+will install the required software, or see `Build (Docker)` below.
 
 Builds are currently failing under OS X: see `OS X` below.
 
@@ -51,13 +51,14 @@ Try it on a test CRAM
 Build (Docker)
 --------------
 
+This is mainly useful when working on the `bam-readcount` code.
+  
 If you have Docker running, build using the included Docker image
 
     cd docker/minimal-cmake
-    # This will start a container using image seqfu/minimal-cmake
     make interact
 
-This will start a minimal docker container with `build-essential` and
+This will start a minimal Docker container with `build-essential` and
 `cmake` installed, with this cloned repository mounted at 
 
     /bam-readcount
@@ -66,22 +67,6 @@ and starting in that directory. Then, follow the build instructions
 above.
 
 
-### Test data
-
-There is a small two-library test CRAM file
-
-    test-data/twolib.sorted.cram  
-
-with associated reference
-
-    test-data/rand1k.fa
-
-The reference is encoded in the CRAM as 
-
-    @SQ	SN:rand1k	LN:1000	M5:11e5d1f36a8e123feb3dd934cc05569a	UR:rand1k.fa
-
-so `bam-readcount` should be run inside the `test-data` directory to
-find the reference.
 
 
 Docker container
@@ -111,52 +96,35 @@ first stage (with build tools) into a minimal image as
     make push
 
 
-CRAM reference
---------------
+Test data
+---------
 
-If no reference is given to `bam-readcount` with `-f`, the CRAM will
-attempt to use the reference encoded in the header, or do a lookup at
-ENA.
+There is a small two-library test CRAM file
 
-If a reference is given with `-f FASTA`, it will override whatever is 
-in the CRAM header.
+    test-data/twolib.sorted.cram  
 
+with associated reference
 
+    test-data/rand1k.fa
+
+The reference is encoded in the CRAM as 
+
+    @SQ	SN:rand1k	LN:1000	M5:11e5d1f36a8e123feb3dd934cc05569a	UR:rand1k.fa
+
+so `bam-readcount` should be run inside the `test-data` directory to
+find the reference.
 
 
 OS X
 ----
 
-OS X builds fail for (at least) two reasons on my High Sierra machine.
-This may be due to my setup with MacPorts etc; I haven't looked into
-this much and the observations below might not be relevant.
+OS X builds fail for (at least) two reasons on our High Sierra machine
+and under GitHub Actions with `mac-10.15` (Catalina) and `mac-11` (Big
+Sur).
 
-Boost: 
-
-When linking, I get pages of errors.
+When linking Boost, there are pages of errors.
 
 This is also true of the current `genome/bam-readcount` `master`.
-
-cURL: 
-
-Not sure what goes wrong here, Make just exits with
-
-    make: *** [all] Error 2
-
-I disabled `libcurl` for a while using the Makefile patch under
-
-    vendor/Makefile.disable_curl.patch
-
-Also getting errors 
-
-    bam-readcount/src/lib/bamrc/BasicStat.hpp:5:10: fatal error:
-          'sam.h' file not found
-    #include "sam.h"
-             ^~~~~~~
-    1 error generated.
-
-Not sure why, since it seems to be a build configuration problem but
-doesn't happen in the minimal Docker build container.
 
 
 Todo
