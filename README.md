@@ -47,12 +47,12 @@ Run with no arguments for command-line help:
                                             Reads containing insertions will not be
                                             included in per-base counts
 
-If specified, `[region]` should be in the same format as `samtools`:
+The optional `[region]` should be in the same format as `samtools`:
 
     chromosome:start-stop
 
-The file provided to the `-l` (`--site-list`) option should be tab-separated,
-one region per line:
+The optional `-l` (`--site-list`) file should be tab-separated, no
+header, one region per line:
 
     chromosome	start	end
 
