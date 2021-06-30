@@ -14,6 +14,10 @@ ask a question on [Biostars](https://www.biostars.org/); we
 automatically monitor [Biostars](https://www.biostars.org/) for
 questions related to our tools.
 
+
+Usage
+-----
+
 Run with no arguments for command-line help:
 
     $ bam-readcount
