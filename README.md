@@ -100,10 +100,10 @@ Bugs
 ### I get a segfault when attempting to run on a whole bam file
 
 This is a known bug that will be addressed in future versions. In most
-cases, you will only need read counts on a subset of positions and
-specifying the sites of interest is functional. Should you need to run
-the entire genome through then running by chromosome and concatenating
-the results should be a decent workaround (e.g. `bam-readcount -f
+cases, you will only need read counts on a subset of positions and can
+use `[region]` or `-l` to specifying the sites of interest. Should you
+need counts on the entire genome a workaround is to run `bam-readcount`
+by chromosome and then concatenate the results (e.g. `bam-readcount -f
 ref.fasta some.bam chr1`).
 
 
