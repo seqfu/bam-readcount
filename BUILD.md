@@ -48,8 +48,8 @@ Try it on a test CRAM
     ../build/bin/bam-readcount -f rand1k.fa twolib.sorted.cram
 
 
-Build (Docker)
---------------
+Build (Docker-based)
+--------------------
 
 This is mainly useful when working on the `bam-readcount` code.
   
@@ -67,21 +67,8 @@ and starting in that directory. Then follow the build instructions
 above.
 
 
-
-
-Docker container
-----------------
-
-For development builds, use the method above. This method will remove
-and rebuild from scratch every time.
-
-To run the latest build from DockerHub on the test data
-
-    cd test-data
-
-    # Will mount current directory as /work and start in that directory
-    # in order to find the input files
-    docker run -v $(pwd):/work -w /work seqfu/bam-readcount /bin/bam-readcount -f rand1k.fa twolib.sorted.cram
+Build Docker image
+------------------
 
 This is a two-stage build, copying the `bam-readcount` binary from the
 first stage (with build tools) into a minimal image as
@@ -91,8 +78,7 @@ first stage (with build tools) into a minimal image as
     make build
     # Try out interactively
     make interact
-    # Change the NAME at the top of the Makefile first
-    # push to DockerHub with git hash as tag and also set to latest
+    # Change the NAME at the top of the Makefile first!
     make push
 
 
@@ -118,21 +104,15 @@ find the reference.
 OS X
 ----
 
-OS X builds fail for (at least) two reasons on our High Sierra machine
-and under GitHub Actions with `mac-10.15` (Catalina) and `mac-11` (Big
-Sur).
+OS X builds fail on our High Sierra machine and under GitHub Actions
+with `macos-10.15` (Catalina) and `macos-11` (Big Sur).
 
 When linking Boost, there are pages of errors.
 
-This is also true of the current `genome/bam-readcount` `master`.
+This is also true of versions prior to the samtools-1.10 switch.
 
 
 Todo
 ----
 
 Add `URL_HASH` for vendored libraries for CMake verification.
-
-On MGI's LSF cluster, the curl/https lookup in the ENA CRAM registry
-fails. This might be expected due to network restrictions on cluster
-containers.
-
