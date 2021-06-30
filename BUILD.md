@@ -63,7 +63,7 @@ This will start a minimal Docker container with `build-essential` and
 
     /bam-readcount
 
-and starting in that directory. Then, follow the build instructions 
+and starting in that directory. Then follow the build instructions 
 above.
 
 
