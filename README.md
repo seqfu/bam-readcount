@@ -9,10 +9,21 @@ bam-readcount
 single nucleotide positions. These metrics can be useful for filtering
 out false positive variant calls.
 
-For build instructions, see [BUILD.md](BUILD.md). For support, please
+For support, please
 ask a question on [Biostars](https://www.biostars.org/); we
 automatically monitor [Biostars](https://www.biostars.org/) for
 questions related to our tools.
+
+
+Build
+-----
+
+For details and requirements, see [BUILD.md](BUILD.md). 
+
+  mkdir build
+  cd build
+  cmake ..
+  make
 
 
 Usage
