@@ -9,7 +9,10 @@ bam-readcount
 single nucleotide positions. These metrics can be useful for filtering
 out false positive variant calls.
 
-For build instructions, see [BUILD.md](BUILD.md).
+For build instructions, see [BUILD.md](BUILD.md). For support, please
+ask a question on [Biostars](https://www.biostars.org/); we
+automatically monitor [Biostars](https://www.biostars.org/) for
+questions related to our tools.
 
 Run with no arguments for command-line help:
 
@@ -49,7 +52,7 @@ position:
 
     chr	position	reference_base	depth	base:count:avg_mapping_quality:avg_basequality:avg_se_mapping_quality:num_plus_strand:num_minus_strand:avg_pos_as_fraction:avg_num_mismatches_as_fraction:avg_sum_mismatch_qualities:num_q2_containing_reads:avg_distance_to_q2_start_in_q2_reads:avg_clipped_length:avg_distance_to_effective_3p_end   ...
 
-There is one set of `:`-separated fields for each reported `base` with 
+There is one set of `:`-separated fields for each reported `base` with
 statistics on the set of reads containing that base:
 
 Field | Description
