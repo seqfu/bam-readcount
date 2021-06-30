@@ -102,7 +102,7 @@ Bugs
 This is a known bug that will be addressed in future versions. In most
 cases, you will only need read counts on a subset of positions and can
 use `[region]` or `-l` to specify the sites of interest. Should you need
-counts on the entire genome, a workaround is to run `bam-readcount` by
+counts on an entire genome, a workaround is to run `bam-readcount` by
 chromosome and then concatenate the results (e.g. `bam-readcount -f
 ref.fasta some.bam chr1`).
 
