@@ -61,7 +61,7 @@ header, one region per line:
 
 `bam-readcount` now supports CRAM files as input. 
 
-If a reference is specified `-f FASTA`, it will override whatever is in
+If a reference is specified with `-f`, it will override whatever is in
 the CRAM header.
 
 Otherwise, the reference(s) encoded in the CRAM header or a lookup by
