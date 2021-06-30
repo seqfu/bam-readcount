@@ -32,10 +32,11 @@ be enabled to disable building of `curl`.
 Notes
 -----
 
-I chose `mbedtls-2.16.4-apache.tgz` for `libcurl` SSL support as it has
+We chose `mbedtls-2.16.4-apache.tgz` for `libcurl` SSL support as it has
 no additional dependencies. This is used (via `https`) to query the ENA
-CRAM registry for reference hashes. Another option might be wolfSSL's
-tiny-cURL distribution, which builds a lighter cURL with HTTPS support,
-but the download process involves a form.
+CRAM registry for reference hashes. 
+
+Instead of `libcurl` another good option might be wolfSSL's tiny-cURL
+distribution, which builds a lighter `curl` library.
 
 
